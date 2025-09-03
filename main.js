@@ -1,7 +1,12 @@
-const btn=document.getElementById("btn");
-btn.addEventListener('click',function(){
 
+
+const btn=document.getElementById("btn");
+
+
+btn.addEventListener('click',function(){
+ 
  async function getquote() {
+    let quotes=document.getElementById("qoutes");
     try{
     const response= await fetch('https://api.api-ninjas.com/v1/quotes',{
         method:"GET",
@@ -14,10 +19,12 @@ btn.addEventListener('click',function(){
     throw new Error(`error http ${response.status}`)
  }
  const data=await response.json();
- console.log(data[0].quote);
+
+console.log(quotes)
+ quotes.textContent=data[0].quote
  }
 catch(error){
-    console.error('error',error.message)
+    console.error('error' ,error.message)
 }
  
  }
